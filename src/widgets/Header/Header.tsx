@@ -11,12 +11,19 @@ export const Header = () => {
     return (
         <div className={
             twMerge(
-                'container mx-auto grid grid-cols-3 py-8 bg-primary text-light',
+                'container mx-auto flex py-8 bg-primary text-light',
                 'xl:px-0',
-                'px-8'
+                'lg:gap-0',
+                'px-8 gap-8'
             )
         } >
-            <div className='flex gap-8'>
+            <div className={
+                twMerge(
+                    'flex gap-8',
+                    'lg:w-4/12',
+                    'w-1/12'
+                )
+            }>
                 <button className='flex gap-4 items-center'>
                     <Image src={menuIcon} alt='menu' height={50} width={50} className='h-8 w-8' />
                     <span
@@ -30,7 +37,13 @@ export const Header = () => {
                         Menu
                     </span>
                 </button>
-                <button className='flex gap-4 items-center'>
+                <button className={
+                    twMerge(
+                        'flex gap-4 items-center',
+                        'lg:flex',
+                        'hidden'
+                    )
+                }>
                     <Image src={searchIcon} alt='search' height={50} width={50} className='h-8 w-8' />
                     <span
                         className={
@@ -44,12 +57,24 @@ export const Header = () => {
                     </span>
                 </button>
             </div>
-            <div className='flex justify-center items-center'>
+            <div className={
+                twMerge(
+                    'flex justify-center items-center',
+                    'lg:w-4/12',
+                    'w-11/12'
+                )
+            }>
                 <div>
                     <Image src={logo} alt="Logo" height={40} />
                 </div>
             </div>
-            <div className='flex gap-8 justify-end'>
+            <div className={
+                twMerge(
+                    'gap-8 justify-end',
+                    'lg:flex lg:w-4/12',
+                    'hidden'
+                )
+            }>
                 <button>
                     <Image src={translateIcon} alt='translate' height={50} width={50} className='h-8 w-8' />
                 </button>

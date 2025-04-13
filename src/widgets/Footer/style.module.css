@@ -1,0 +1,11 @@
+.filterNewsSelect:hover,
+.filterNewsSelect:focus,
+.filterNewsSelect:focus-visible {
+  background: var(--color-primary);
+  border: none;
+  border-color: transparent;
+}
+
+.filterNewsSelect option {
+  padding: 0.4rem 0.8rem;
+}

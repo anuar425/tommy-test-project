@@ -32,7 +32,8 @@ export const Hero = () => {
                 <div className={
                     twMerge(
                         'container mx-auto flex ',
-                        'lg:justify-between lg:items-center lg:gap-0 lg:p-0',
+                        'xl:p-0 ',
+                        'lg:justify-between lg:items-center lg:gap-0 lg:flex-row',
                         'flex-col gap-4 justify-between px-8'
                     )
                 }>

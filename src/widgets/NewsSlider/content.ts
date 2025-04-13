@@ -14,13 +14,7 @@ export const newsList: NewsType[] = [
         date: "Apr 2, 2025",
         link: "https://www.timothyloh.com/insights/latest-news/government-launches-consultation-on-proposed-regulation-of-basketball-betting-activities"
     },
-    {
-        title: "HKMA 2025 Pay Review",
-        description: "The HKMA announced its 2025 pay review, freezing fixed pay for the year starting April 2025 and implementing a 19.93% variable pay based on performance in 2024.",
-        tag: "HKMA",
-        date: "Apr 2, 2025",
-        link: "https://www.timothyloh.com/insights/latest-news/hkma-2025-pay-review",
-    },
+
     {
         title: "LCQ12: Promoting the setting up of family offices in Hong Kong",
         description: "The government of Hong Kong is promoting the establishment of family offices through various tax incentives and business support initiatives. A recent amendment bill has provided tax concessions for family-owned investment holding vehicles, and further enhancements are being formulated. The government is also facilitating the setup and expansion of family offices through support from InvestHK.",
@@ -41,6 +35,20 @@ export const newsList: NewsType[] = [
         tag: " IRD",
         date: "Mar 31, 2025",
         link: "https://www.timothyloh.com/insights/latest-news/tax-representatives-corner-2024-25-profits-tax-return",
+    },
+    {
+        title: "HKMA 2025 Pay Review",
+        description: "The HKMA announced its 2025 pay review, freezing fixed pay for the year starting April 2025 and implementing a 19.93% variable pay based on performance in 2024.",
+        tag: "HKMA",
+        date: "Apr 2, 2025",
+        link: "https://www.timothyloh.com/insights/latest-news/hkma-2025-pay-review",
+    },
+    {
+        title: 'Hong Kong Monetary Authority and Bangko Sentral ng Pilipinas hold bilateral meeting',
+        description: 'HKMA and BSP held a bilateral meeting on 28 March 2025 to discuss central banking cooperation, capital market development, digital payments, digital banking, sustainable finance, cybersecurity, consumer protection, digital financial literacy, climate risk stress testing, and green finance initiatives.',
+        tag: 'HKMA',
+        date: 'Mar 30, 2025',
+        link: 'https://www.timothyloh.com/insights/latest-news/hong-kong-monetary-authority-and-bangko-sentral-ng-pilipinas-hold-bilateral-meeting'
     }
 
 ]
