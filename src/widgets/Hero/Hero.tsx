@@ -2,9 +2,11 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import linkedinLogo from '@/public/icons/linkedin-icon.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 export const Hero = () => {
+
     return (
         <section className='hero mb-16'>
             <div className={`${twMerge('bg-[url(/images/banner.png)] bg-cover bg-center bg-black/30 h-96 flex flex-col justify-end')} `}>
@@ -44,16 +46,20 @@ export const Hero = () => {
                             'text-center'
                         )
                     }>STAY INFORMED ON THE MOST PRESSING LEGAL AND REGULATORY NEWS</p>
-                    <div className={
-                        twMerge(
-                            'flex items-center gap-2 text-light',
-                            'lg:items-start lg:justify-baseline',
-                            'items-center justify-center'
-                        )
-                    }>
-                        <Image src={linkedinLogo} alt='linked-in' className='h-8 w-8' />
-                        <p className='uppercase text-lg'>Follow us on LinkedIn</p>
-                    </div>
+                    <Link href='https://www.linkedin.com/company/timothy-loh-solicitors/' target='_blank'>
+                        <div
+                            className={
+                                twMerge(
+                                    'flex items-center gap-2 text-light',
+                                    'lg:items-start lg:justify-baseline',
+                                    'items-center justify-center'
+                                )
+                            }
+                        >
+                            <Image src={linkedinLogo} alt='linked-in' className='h-8 w-8' />
+                            <p className='uppercase text-lg'>Follow us on LinkedIn</p>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </section>

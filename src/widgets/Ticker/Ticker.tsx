@@ -5,46 +5,10 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RightIcon from '@/shared/icons/RightIcon';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge'
-
-const data = [
-    {
-        id: 1,
-        name: "Hang Seng",
-        value: 19299.18,
-        change: 0.25,
-        changeType: "positive"
-    },
-    {
-        id: 2,
-        name: "Nifty",
-        value: 19299.18,
-        change: -0.25,
-        changeType: "negative"
-    },
-    {
-        id: 3,
-        name: "S&P 500",
-        value: 19299.18,
-        change: 0.25,
-        changeType: "positive"
-    },
-    {
-        id: 4,
-        name: "NASDAQ",
-        value: 19299.18,
-        change: -0.25,
-        changeType: "negative"
-    },
-    {
-        id: 5,
-        name: "FTSE",
-        value: 19299.18,
-        change: 0.25,
-        changeType: "positive"
-    },
-] as const
+import { getTickers } from './api';
+import { GetTickerResponse } from './api/tickerApi';
 
 const settings: Settings = {
     dots: false,
@@ -55,6 +19,7 @@ const settings: Settings = {
     arrows: false,
     // variableWidth: true
     swipe: false,
+    adaptiveHeight: true,
     responsive: [
         {
             breakpoint: 1600,
@@ -79,7 +44,7 @@ const settings: Settings = {
 };
 
 export const Ticker = () => {
-
+    const [tickers, setTickers] = useState<GetTickerResponse[]>([])
     const sliderRef = useRef<Slider | null>(null);
 
     const nextSlide = () => {
@@ -93,6 +58,18 @@ export const Ticker = () => {
         sliderRef?.current.slickPrev()
     }
 
+    useEffect(() => {
+        (async () => {
+            try {
+                const tickers = await getTickers()
+                setTickers(tickers)
+            } catch (error) {
+                console.log([])
+                console.log(`Error use effect:${error}`)
+            }
+        })()
+    }, [])
+
     return (
         <>
             <div
@@ -105,10 +82,10 @@ export const Ticker = () => {
                 }
             >
                 <Slider ref={sliderRef}  {...settings} className='w-full' >
-                    {data.map((item) => (
-                        <div key={item.id} className=''>
-                            <div className='p-2 border border-primary rounded-lg text-center bg-primary text-white mx-1 text-xs' >
-                                <p>{item.name} | {item.value} <span className={`${item.changeType === 'positive' ? 'text-green-400' : 'text-red-400'}`}>{item.change}%</span></p>
+                    {tickers.map((item, index) => (
+                        <div key={index} className=''>
+                            <div className='p-2 border border-primary rounded-lg text-center bg-primary text-white mx-1 text-xs min-w-fit' >
+                                <p className='text-nowrap'>{item.name} | {item.price} {item.currency} <span className={`${item.changeType === 'positive' ? 'text-green-400' : 'text-red-400'}`}>{item.precent}%</span></p>
                             </div>
                         </div>
 
@@ -118,9 +95,9 @@ export const Ticker = () => {
             <div
                 className={
                     twMerge(
-                        'flex items-center gap-2',
+                        'items-center gap-2',
                         "2xl:w-1/12",
-                        'lg:w-2/12 block',
+                        'lg:w-2/12 lg:flex',
                         'hidden',
                     )
                 }>

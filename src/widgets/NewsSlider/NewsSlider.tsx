@@ -11,6 +11,7 @@ import LeftArrow from '@/shared/icons/LeftIcon'
 import { Button, Select } from '@/shared/ui';
 import { twMerge } from 'tailwind-merge'
 import RightIcon from '@/shared/icons/RightIcon';
+import Link from 'next/link';
 
 const CustomArrows = ({ arrowType, className, onClick }: { arrowType: 'next' | 'prev', className: string, onClick: () => void }) => {
 
@@ -55,7 +56,6 @@ const settings: Settings = {
 }
 
 export const NewsSlider = () => {
-
     const [selectedSlider, setSelectedSlider] = useState<number>(1);
     const [tag, setTag] = useState<string>('IRD')
     const sliderRef = useRef<Slider | null>(null);
@@ -155,20 +155,23 @@ export const NewsSlider = () => {
                             {newsList
                                 .filter((item) => item.tag === tag)
                                 .map((item, key) => (
-                                    <div key={key} className=''>
-                                        <div className='grid grid-row-3 gap-4 px-8 border-e h-64' >
-                                            <div className='h-20'>
-                                                <h6 className='text-lg h-full line-clamp-3'>{item.title}</h6>
-                                            </div>
-                                            <div className='h-24 '>
-                                                <p className='line-clamp-4 h-full text-justify'>{item.description}</p>
-                                            </div>
-                                            <div className='h-10 flex justify-between items-center'>
-                                                <div className={`${styles.tag} uppercase bg-secondary text-primary px-4 py-1 min-w-20 text-center`}>{item.tag}</div>
-                                                <p>{item.date}</p>
+                                    <Link key={key} href={item.link} target='_blank'>
+                                        <div className=''>
+                                            <div className='grid grid-row-3 gap-4 px-8 border-e h-64' >
+                                                <div className='h-20'>
+                                                    <h6 className='text-lg h-full line-clamp-3'>{item.title}</h6>
+                                                </div>
+                                                <div className='h-24 '>
+                                                    <p className='line-clamp-4 h-full text-justify'>{item.description}</p>
+                                                </div>
+                                                <div className='h-10 flex justify-between items-center'>
+                                                    <div className={`${styles.tag} uppercase bg-secondary text-primary px-4 py-1 min-w-20 text-center`}>{item.tag}</div>
+                                                    <p>{item.date}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
+
                                 ))}
                         </Slider>
                     </div>

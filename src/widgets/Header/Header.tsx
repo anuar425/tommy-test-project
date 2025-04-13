@@ -6,6 +6,7 @@ import searchIcon from '@/public/icons/search-icon.png'
 import translateIcon from '@/public/icons/translate-icon.png'
 import linkedinIcon from '@/public/icons/linkedin-icon.png'
 import { twMerge } from 'tailwind-merge'
+import Link from 'next/link'
 
 export const Header = () => {
     return (
@@ -78,9 +79,11 @@ export const Header = () => {
                 <button>
                     <Image src={translateIcon} alt='translate' height={50} width={50} className='h-8 w-8' />
                 </button>
-                <button>
-                    <Image src={linkedinIcon} alt='linkedin' height={50} width={50} className='h-8 w-8' />
-                </button>
+                <Link href='https://www.linkedin.com/company/timothy-loh-solicitors/' target='_blank'>
+                    <button>
+                        <Image src={linkedinIcon} alt='linkedin' height={50} width={50} className='h-8 w-8' />
+                    </button>
+                </Link>
             </div>
         </div>
     )
